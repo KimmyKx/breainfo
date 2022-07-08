@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- title %></title>
+    <link rel="stylesheet" href="/css/main.css">
+    <meta content="Breainfo - Item Database" property="og:title">
+    <meta content="Welcome to Breainfo, View all the information about every items, events, and what happening in [Breaworlds](https://breaworldsgame.com/). Add your favorite item, review them, follow news, and more!" property="og:description">
+    <meta property="og:url" content="https://breainfo.rf.gd?a=d">
+    <meta content="https://cdn.glitch.me/3a532837-2d8d-4a9c-9c7d-dd47b72a9492%2F20211113_053127_mh1636753010566.jpg?v=1636756136185" property="og:image">
+    <meta content="#2596BE" data-react-helmet="true" name="theme-color">
+    <script src="https://kit.fontawesome.com/978f66dec6.js" crossorigin="anonymous"></script>
+    <%- defineContent('head') %>
+</head>
+<body class="relative">
+    <nav>
+        <div class="menu-bar">
+            <i class="fas fa-bars side-open-icon"></i>
+        </div>
+        <h1>Breainfo</h1>
+        <% if(!signed) { %>
+            <a href="/login" class="login-btn">Login</a>
+        <% } else { %>
+        <img src="/image/breainfo.png" alt="breainfo">
+        <% } %>
+    </nav>
+    <div class="loading">
+        <img src="/image/breainfo.png" alt="breainfo" width="100">
+        <h2 class="text-white">Loading <i class="fas fa-spinner fa-spin text-white"></i></h2>
+    </div>
+    <aside id="closable">
+        <div class="side-bg text-white">
+            <i class="fas fa-xmark side-close-icon text-center" id="closable"></i>
+            <br>
+            <h2 class="text-center weight-light">Breainfo</h2>
+            <div class="side-content">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <%- body %>
+    <footer class="bi-bg-alt">
+        <div class="support">
+            <p>Support us:</p>
+            <a href="https://discord.gg/TttQVHcbGw"><i class="fab fa-discord"></i>
+            <a href="https://play.google.com/store/apps/details?id=com.breaworlds.app/"><i class="fab fa-google-play"></i></a>
+            <a href="https://breaworldsgame.com"><i class="fas fa-globe"></i></a>
+            <a href="https://instagram.com/breaworldsofficial"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="logo">
+            <div>
+                <img src="/image/breainfo.png" alt="breainfo" width="40">
+            </div>
+            <h2>Breainfo</h2>
+        </div>
+        <div class="rights">
+            <p>Breainfo is a property of Breaworlds Staff Team &copy;2022 All Rights Reserved.</p>
+            <span>This site is protected & completely safe from any threat.</span>
+        </div>
+    </footer>
+    <script src="/js/sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<%- contentFor('title') %>
+Home
+<%- contentFor('head') %>
+<link rel="stylesheet" href="/css/index.css">
+<%- contentFor('body') %>
+<div class="container">
+    <div class="search-bar">
+        <input type="text" placeholder="Search" class="search placeholder-white">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="content">
+        <div class="announcement bi-bg bi-border bi-shadow">
+            <h3 class="title bi-bg-alt text-center">News</h3>
+            <div class="announcement-content bi-scroll">
+                <% announcements.forEach(announcement => { %>
+                    <div>
+                        <h4><%= announcement.title %></h4>
+                        <span><%= announcement.content %></span>
+                    </div>
+                <% }) %>
+                <%- announcements == 0 ? '<p class="text-center">No news.</p>' : '' %>
+            </div>
+        </div>
+        <div class="featured bi-bg bi-border bi-shadow">
+            <h3 class="title bi-bg-alt text-center">Featured</h3>
+            <div class="featured-content bi-scroll">
+                <div>
+                    <span class="holder bi-border bi-bg">
+                        <img src="/image/breainfo.png" alt="breainfo" width="75">
+                    </span>
+                    <h3>Breainfo</h3>
+                </div>
+            </div>
+        </div>
+        <div class="recent bi-bg bi-border bi-shadow">
+            <h3 class="title bi-bg-alt text-center">Recently added</h3>
+            <div class="recent-content">
+                <div>
+                    <span>
+                        <img src="/image/breainfo.png" alt="breainfo" width="75">
+                    </span>
+                    <span>
+                        <h4>Breainfo</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores natus ratione incidunt voluptate soluta, voluptatem ipsam asperiores corporis veritatis quos.</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/index.js"></script>

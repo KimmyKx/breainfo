@@ -1,0 +1,49 @@
+import ItemStructure from '../structures/item'
+import Item from '../models/item'
+import { HandleError } from '../utils/middleware'
+import Breainfo from '../namespaces/Breainfo'
+import { Request, Response } from 'express'
+
+const HandleItemAddPost = async (req: Breainfo.ReqItemAddPost, res: Response) => {
+	try {
+		if(!req.data.admin) return res.status(403).json({ error: '403 Forbidden' })
+		await new Item(
+			new ItemStructure(req.body)
+		).save()
+		res.json({ success: true })
+	} catch(err) {
+		HandleError(res, err)
+	}
+}
+
+const HandleItemViewPost = async (req: Breainfo.ReqItemViewPost, res: Response) => {
+	try {
+		res.json(await Item.findOne({ slug: req.body.slug }))
+	} catch(err) {
+		HandleError(res, err)
+	}
+}
+
+const HandleItemAllPost = async (_req: Request, res: Response) => {
+	try {
+		res.json(await Item.find({}))
+	} catch(err) {
+		HandleError(res, err)
+	}
+}
+
+const HandleItemSearchPost = async (req: Breainfo.ReqItemSearchPost, res: Response) => {
+	try {
+		const re = new RegExp(`${req.body.name}`, 'gi')
+		res.json(await Item.find({ name: re }).limit(15))
+	} catch(err) {
+		HandleError(res, err)
+	}
+}
+
+export default {
+	HandleItemAddPost,
+	HandleItemViewPost,
+	HandleItemAllPost,
+	HandleItemSearchPost
+}
