@@ -10,7 +10,7 @@ To setup and run the project for local development, you will need to install Nod
 Installers can be found at https://nodejs.org/en/download
 
 This app is using mongodb as its database. You can install mongodb to your machine or directly using it from the mongodb atlas itself which you can find it here: https://mongodb.com/
-after you registered an account on mongodb send the url to `.env` file with key `mongo` e.g: 
+after you registered an account on mongodb send your atlas url to `.env` file with key `mongo` e.g: 
 `mongo=mongodb://yourUsername:yourPassword@cluster0-shard-00-00.htmc3.mongodb.net:27017,cluster0-shard-00-02.htmc3.mongodb.net:27017/breainfo`
 
 ## Installation
