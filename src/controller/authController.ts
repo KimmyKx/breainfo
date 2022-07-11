@@ -5,7 +5,7 @@ import Breainfo from '../namespaces/Breainfo'
 
 const HandleSignupGet = (req: any, res: any) => {
 	try {
-		res.render('signup')
+		res.render('signup', { signed: false })
 	} catch(err) {
 		console.error(err)
 	}

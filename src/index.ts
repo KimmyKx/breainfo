@@ -6,11 +6,13 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import expressLayouts from 'express-ejs-layouts'
 import routes from './utils/routes'
+import fileupload from 'express-fileupload'
 const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(fileupload())
 app.use(express.static('public'))
 app.use(cookieParser())
 app.set('views', 'public/views')

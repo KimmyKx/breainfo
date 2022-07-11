@@ -1,6 +1,7 @@
-import { RequestHandler, Response } from 'express'
+import { Response } from 'express'
 import jwt, { Secret } from 'jsonwebtoken'
 import User from '../models/user'
+import ImageKit from 'imagekit'
 
 const Authorize = (req: any, res: any, next: any) => {
 	try {
@@ -47,8 +48,29 @@ export function toSlug(str: string) {
 	return str.trim().replace(/\s+/g, '-').replace(/[']/g, '')
 }
 
+export async function UploadFile(req: any) {
+	try {
+		const buffer = req.files.image.data
+		const imageKit = new ImageKit({
+			publicKey: 'public_dLoNCPsLvqqKflHFaks5xxBMvtI=',
+			privateKey: `${process.env.ImageKit_API_KEY}`,
+			urlEndpoint: 'https://ik.imagekit.io/ogxcsdv9ca'
+		})
+		const response: any = await imageKit.upload({
+			file: buffer,
+			fileName: 'breainfo.png',
+			folder: '/Breainfo'
+		})
+		return { success: true, url: response.url }
+	} catch(err) {
+		console.log(err)
+		return { success: false }
+	}
+}
+
 export default {
 	Authorize,
 	HandleError,
-	toSlug
+	toSlug,
+	UploadFile
 }

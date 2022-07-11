@@ -1,0 +1,8 @@
+<%- contentFor('title') %>
+Add new Item
+<%- contentFor('body') %>
+
+<form action="/item/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="image">
+    <button type="submit">Submit</button>
+</form>

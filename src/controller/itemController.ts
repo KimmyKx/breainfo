@@ -41,9 +41,19 @@ const HandleItemSearchPost = async (req: Breainfo.ReqItemSearchPost, res: Respon
 	}
 }
 
+const HandleItemAddGet = (req: any, res: Response) => {
+	try {
+		if(!req.data?.admin) return res.status(403).json({ error: '403 Forbidden' })
+		res.render('item/add', { signed: req.data.signed })
+	} catch(err) {
+		HandleError(res, err)
+	}
+}
+
 export default {
 	HandleItemAddPost,
 	HandleItemViewPost,
 	HandleItemAllPost,
-	HandleItemSearchPost
+	HandleItemSearchPost,
+	HandleItemAddGet
 }

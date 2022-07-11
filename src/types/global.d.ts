@@ -4,7 +4,8 @@ declare global {
       JWT_ACCESS_TOKEN: Secret,
       JWT_REFRESH_TOKEN: Secret,
       mongo: string,
-      admins: array
+      admins: array,
+      ImageKit_API_KEY: string
     }
   }
 }

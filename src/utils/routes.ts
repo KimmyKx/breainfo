@@ -10,6 +10,8 @@ router.get('/', middleware.Authorize, homeController.HandleRootGet)
 router.get('/signup', authController.HandleSignupGet)
 router.get('/login', authController.HandleLoginGet)
 
+router.get('/item/add', middleware.Authorize, itemController.HandleItemAddGet)
+
 // post
 router.post('/signup', authController.HandleSignupPost)
 router.post('/login', authController.HandleLoginPost)
