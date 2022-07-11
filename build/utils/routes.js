@@ -13,6 +13,7 @@ const router = require('express').Router();
 router.get('/', middleware_1.default.Authorize, homeController_1.default.HandleRootGet);
 router.get('/signup', authController_1.default.HandleSignupGet);
 router.get('/login', authController_1.default.HandleLoginGet);
+router.get('/item/add', middleware_1.default.Authorize, itemController_1.default.HandleItemAddGet);
 // post
 router.post('/signup', authController_1.default.HandleSignupPost);
 router.post('/login', authController_1.default.HandleLoginPost);

@@ -17,14 +17,14 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const HandleSignupGet = (req, res) => {
     try {
-        res.render('signup');
+        res.render('signup', { signed: false });
     }
     catch (err) {
         console.error(err);
     }
 };
 const HandleLoginGet = (req, res) => {
-    res.render('login', { title: 'User Login' });
+    res.render('login', { signed: false, title: 'User Login' });
 };
 const HandleSignupPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

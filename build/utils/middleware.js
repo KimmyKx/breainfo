@@ -12,9 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toSlug = exports.HandleError = void 0;
+exports.UploadFile = exports.toSlug = exports.HandleError = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const user_1 = __importDefault(require("../models/user"));
+const imagekit_1 = __importDefault(require("imagekit"));
 const Authorize = (req, res, next) => {
     try {
         req.data = {};
@@ -64,8 +65,32 @@ function toSlug(str) {
     return str.trim().replace(/\s+/g, '-').replace(/[']/g, '');
 }
 exports.toSlug = toSlug;
+function UploadFile(req) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const buffer = req.files.image.data;
+            const imageKit = new imagekit_1.default({
+                publicKey: 'public_dLoNCPsLvqqKflHFaks5xxBMvtI=',
+                privateKey: `${process.env.ImageKit_API_KEY}`,
+                urlEndpoint: 'https://ik.imagekit.io/ogxcsdv9ca'
+            });
+            const response = yield imageKit.upload({
+                file: buffer,
+                fileName: 'breainfo.png',
+                folder: '/Breainfo'
+            });
+            return { success: true, url: response.url };
+        }
+        catch (err) {
+            console.log(err);
+            return { success: false, url: 'breainfo.png' };
+        }
+    });
+}
+exports.UploadFile = UploadFile;
 exports.default = {
     Authorize,
     HandleError: exports.HandleError,
-    toSlug
+    toSlug,
+    UploadFile
 };

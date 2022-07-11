@@ -15,7 +15,23 @@ const ItemObject = new item_1.default({
             validator: isValidName
         }
     },
+    image: {
+        type: String,
+        default: 'breainfo.png'
+    },
+    description: String,
     gems: Number,
+    category: Array,
+    farmability: String,
+    droppable: String,
+    tradable: String,
+    displayable: String,
+    breakable: String,
+    growth: String,
+    color: Array,
+    hit: String,
+    effect: String,
+    obtained: String,
     timestamp: Number,
     slug: String
 });

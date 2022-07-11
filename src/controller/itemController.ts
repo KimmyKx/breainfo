@@ -3,10 +3,13 @@ import Item from '../models/item'
 import { HandleError } from '../utils/middleware'
 import Breainfo from '../namespaces/Breainfo'
 import { Request, Response } from 'express'
+import middleware from '../utils/middleware'
 
 const HandleItemAddPost = async (req: Breainfo.ReqItemAddPost, res: Response) => {
 	try {
 		if(!req.data.admin) return res.status(403).json({ error: '403 Forbidden' })
+		const file = await middleware.UploadFile(req)
+		req.body.image = file.url
 		await new Item(
 			new ItemStructure(req.body)
 		).save()

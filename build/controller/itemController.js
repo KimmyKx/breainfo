@@ -15,10 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const item_1 = __importDefault(require("../structures/item"));
 const item_2 = __importDefault(require("../models/item"));
 const middleware_1 = require("../utils/middleware");
+const middleware_2 = __importDefault(require("../utils/middleware"));
 const HandleItemAddPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!req.data.admin)
             return res.status(403).json({ error: '403 Forbidden' });
+        const file = yield middleware_2.default.UploadFile(req);
+        req.body.image = file.url;
         yield new item_2.default(new item_1.default(req.body)).save();
         res.json({ success: true });
     }
@@ -51,9 +54,21 @@ const HandleItemSearchPost = (req, res) => __awaiter(void 0, void 0, void 0, fun
         (0, middleware_1.HandleError)(res, err);
     }
 });
+const HandleItemAddGet = (req, res) => {
+    var _a;
+    try {
+        if (!((_a = req.data) === null || _a === void 0 ? void 0 : _a.admin))
+            return res.status(403).json({ error: '403 Forbidden' });
+        res.render('item/add', { signed: req.data.signed });
+    }
+    catch (err) {
+        (0, middleware_1.HandleError)(res, err);
+    }
+};
 exports.default = {
     HandleItemAddPost,
     HandleItemViewPost,
     HandleItemAllPost,
-    HandleItemSearchPost
+    HandleItemSearchPost,
+    HandleItemAddGet
 };

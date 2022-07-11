@@ -26,7 +26,6 @@ const HandleAnnouncementAddPost = (req, res) => __awaiter(void 0, void 0, void 0
         (0, middleware_1.HandleError)(res, err);
     }
 });
-console.log('hello world');
 const HandleAnnouncementViewPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json(yield announcement_1.default.findOne({ slug: req.body.slug }));
@@ -35,7 +34,11 @@ const HandleAnnouncementViewPost = (req, res) => __awaiter(void 0, void 0, void 
         (0, middleware_1.HandleError)(res, err);
     }
 });
+const HandleAnnouncementAll = () => __awaiter(void 0, void 0, void 0, function* () {
+    return yield announcement_1.default.find({});
+});
 exports.default = {
     HandleAnnouncementAddPost,
-    HandleAnnouncementViewPost
+    HandleAnnouncementViewPost,
+    HandleAnnouncementAll
 };

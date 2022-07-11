@@ -64,7 +64,7 @@ export async function UploadFile(req: any) {
 		return { success: true, url: response.url }
 	} catch(err) {
 		console.log(err)
-		return { success: false }
+		return { success: false, url: 'breainfo.png' }
 	}
 }
 
