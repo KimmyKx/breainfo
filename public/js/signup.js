@@ -12,6 +12,8 @@ main_form.onsubmit = async e => {
 		const data = await res.json()
 		if(data.success) {
 			location = '/'
+		} else {
+			error_message.innerText = data.error
 		}
 	} catch(err) {
 		console.log(err)

@@ -51,7 +51,7 @@ const HandleLoginPost = (req, res) => __awaiter(void 0, void 0, void 0, function
             return res.json({ error: 'Username does not exist' });
         const isMatch = bcrypt_1.default.compareSync(password, user.password);
         if (!isMatch)
-            return res.json({ error: 'Password is incorrect' });
+            return res.json({ error: 'Incorrect credentials' });
         const token = jsonwebtoken_1.default.sign({ user: { username: user.username } }, process.env.JWT_ACCESS_TOKEN);
         res.cookie('t', token, { httpOnly: true });
         res.json({ success: true });

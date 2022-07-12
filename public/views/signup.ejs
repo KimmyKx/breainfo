@@ -1,15 +1,23 @@
 <%- contentFor('title')%>
 Sign Up
+
+<%- contentFor('head') %>
+<link rel="stylesheet" href="/css/login.css">
 <%- contentFor('body') %>
-<form id="main_form">
-    <label for="Username">Username</label>
-    <br>
-    <input type="text" name="Username" id="Username">
-    <br><br>
-    <label for="Password">Password</label>
-    <br>
-    <input type="password" name="Password" id="Password">
-    <br>
-    <button type="submit">Create account</button>
-</form>
+<div class="content bi-bg bi-border bi-shadow">
+    <h2 class="bi-bg-alt">Register</h2>
+    <form id="main_form">
+        <p id="error_message"></p>
+        <label for="Username">Username</label>
+        <br>
+        <input type="text" name="Username" id="Username" class="bi-input">
+        <br><br>
+        <label for="Password">Password</label>
+        <br>
+        <input type="password" name="Password" id="Password" class="bi-input">
+        <br>
+        <button type="submit" class="bi-btn bi-shadow">Create account</button>
+    </form>
+</div>
+<a href="/login" class="bi-btn bi-shadow">Already have an account?</a>
 <script src="/js/signup.js"></script>

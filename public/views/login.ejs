@@ -1,12 +1,20 @@
-<form id="main_form">
-    <label for="username">Username</label>
-    <br>
-    <input type="text" name="username" id="username">
-    <br><br>
-    <label for="password">Password</label>
-    <br>
-    <input type="password" name="password" id="password">
-    <br>
-    <button type="submit">Login</button>
-</form>
+<%- contentFor('head') %>
+<link rel="stylesheet" href="/css/login.css">
+<%- contentFor('body') %>
+<div class="content bi-bg bi-border bi-shadow">
+    <h2 class="bi-bg-alt">Login</h2>
+    <form id="main_form">
+        <p id="error_message"></p>
+        <label for="username">Username</label>
+        <br>
+        <input type="text" name="username" id="username" class="bi-input">
+        <br><br>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" name="password" id="password" class="bi-input">
+        <br>
+        <button type="submit" class="bi-btn bi-shadow">Login</button>
+    </form>
+</div>
+<a href="/signup" class="bi-btn bi-shadow">Don't have an account yet?</a>
 <script src="/js/login.js"></script>

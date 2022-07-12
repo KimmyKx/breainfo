@@ -8,8 +8,13 @@ div {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+@font-face {
+    font-family: 'CustomCG';
+	src: url('/fonts/Century_Gothic.woff') format('woff');
+}
+
 body {
-    font-family: 'Century Gothic', monospace, sans-serif;
+    font-family: 'Century Gothic', 'CustomCG', monospace, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -237,6 +242,35 @@ aside {
 
 .bi-shadow {
     box-shadow: 1px 1px 0 0 black;
+}
+
+.bi-input {
+    background-color: rgba(8, 51, 58, .5);
+    border: 3px solid rgb(58, 112, 156);
+    border-radius: 5px;
+    color: white;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.bi-input::placeholder {
+    color: rgba(255, 255, 255, .7);
+}
+
+.bi-input:focus {
+    outline: none;
+}
+
+.bi-btn {
+    background-color: rgb(58, 112, 156);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    border: 0;
+}
+
+.bi-btn:focus {
+    outline: none;
 }
 
 footer {

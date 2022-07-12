@@ -39,7 +39,7 @@ const HandleLoginPost = async (req: Breainfo.ReqLoginPost, res: any) => {
 		const user = await User.findOne({ username: re })
 		if(!user) return res.json({ error: 'Username does not exist' })
 		const isMatch = bcrypt.compareSync(password, user.password)
-		if(!isMatch) return res.json({ error: 'Password is incorrect' })
+		if(!isMatch) return res.json({ error: 'Incorrect credentials' })
 		const token = jwt.sign({ user: { username: user.username }}, process.env.JWT_ACCESS_TOKEN as Secret)
 		res.cookie('t', token, { httpOnly: true })
 		res.json({ success: true })
