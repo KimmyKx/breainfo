@@ -23,7 +23,7 @@
         <% if(!signed) { %>
             <a href="/login" class="login-btn">Login</a>
         <% } else { %>
-        <img src="/image/breainfo.png" alt="breainfo">
+            <img src="/image/breainfo.png" alt="breainfo">
         <% } %>
     </nav>
     <div class="loading">
@@ -36,9 +36,16 @@
             <br>
             <h2 class="text-center weight-light">Breainfo</h2>
             <div class="side-content">
+                <h4>Pages</h4>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/" class="bi-shadow">Home</a></li>
                 </ul>
+                <% if(admin) { %>
+                    <h4>Admin</h4>
+                    <ul>
+                        <li><a href="/admin" class="bi-shadow">Mod Panel</a></li>
+                    </ul>
+                <% } %>
             </div>
         </div>
     </aside>

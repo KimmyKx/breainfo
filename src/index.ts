@@ -22,7 +22,7 @@ app.set('view engine', 'ejs')
 app.use(routes)
 app.use((req: any, res: any) => {
 	res.status(404)
-	res.render('404', { signed: false })
+	res.render('404', { signed: false, admin: false })
 })
 
 app.listen(PORT, () => console.log(`Running server on port ${PORT}`))

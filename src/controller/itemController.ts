@@ -47,7 +47,16 @@ const HandleItemSearchPost = async (req: Breainfo.ReqItemSearchPost, res: Respon
 const HandleItemAddGet = (req: any, res: Response) => {
 	try {
 		if(!req.data?.admin) return res.status(403).json({ error: '403 Forbidden' })
-		res.render('item/add', { signed: req.data.signed })
+		res.render('item/add', { signed: req.data.signed, admin: true })
+	} catch(err) {
+		HandleError(res, err)
+	}
+}
+
+const HandleItemAllGet = async (req: Breainfo.ReqAuthorizeMiddleware, res: Response) => {
+	try {
+		if(!req.data?.admin) return res.status(403).json({ error: '403 Forbidden' })
+		res.render('item/all', { signed: req.data.signed, admin: true, items: await Item.find({}) })
 	} catch(err) {
 		HandleError(res, err)
 	}
@@ -58,5 +67,6 @@ export default {
 	HandleItemViewPost,
 	HandleItemAllPost,
 	HandleItemSearchPost,
-	HandleItemAddGet
+	HandleItemAddGet,
+	HandleItemAllGet
 }

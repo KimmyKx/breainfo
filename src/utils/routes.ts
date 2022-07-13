@@ -1,3 +1,4 @@
+import adminController from '../controller/adminController'
 import announcementController from '../controller/announcementController'
 import authController from '../controller/authController'
 import homeController from '../controller/homeController'
@@ -7,10 +8,14 @@ const router = require('express').Router()
 
 // get
 router.get('/', middleware.Authorize, homeController.HandleRootGet)
+
 router.get('/signup', authController.HandleSignupGet)
 router.get('/login', authController.HandleLoginGet)
 
-router.get('/item/add', middleware.Authorize, itemController.HandleItemAddGet)
+router.get('/admin', middleware.Authorize, adminController.HandleAdminGet)
+router.get('/admin/item/add', middleware.Authorize, itemController.HandleItemAddGet)
+router.get('/admin/item/all', middleware.Authorize, itemController.HandleItemAllGet)
+
 
 // post
 router.post('/signup', authController.HandleSignupPost)
