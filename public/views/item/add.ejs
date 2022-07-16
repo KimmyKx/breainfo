@@ -1,7 +1,36 @@
 <%- contentFor('title') %>
 Add new Item
+<%- contentFor('head') %>
+<link rel="stylesheet" href="/css/adminItem.css">
 <%- contentFor('body') %>
-<form action="/item/add" method="post" enctype="multipart/form-data">
-    <input type="file" name="image">
-    <button type="submit">Submit</button>
-</form>
+<div class="content">
+    <form action="/item/add" method="post" enctype="multipart/form-data" class="bi-bg bi-border">
+        <span class="info">Anything labeled as * (red asterisk) is required and should not be left empty and the rest are optional, please provide official information.</span>
+        <br>
+        <label for="name">Name <span class="required">*</span></label>
+        <br>
+        <input type="text" name="name" id="name" class="bi-input" autocomplete="off" placeholder="Item name e.g: Dirt">
+        <br><br>
+        <label for="image">Image</label>
+        <br>
+        <input type="file" name="image" id="image" class="bi-input" accept="image/*" autocomplete="off">
+        <br><br>
+        <label for="description">Description</label>
+        <br>
+        <textarea name="description" id="description" class="bi-input" cols="50" rows="7" spellcheck="false" placeholder="Describe the item, e.g: what it use for, who designs it, when it was released, special effects, etc"></textarea>
+        <br><br>
+        <label for="gems">Gems</label>
+        <br>
+        <input type="text" name="gems" id="gems" class="bi-input" placeholder="e.g: 10-21 Gems">
+        <br><br>
+        <label for="category">Category <i class="fas fa-plus"></i></label>
+        <br>
+        <div id="category_holder" class="bi-bg bi-border">
+            <div class="cat bi-bg-alt bi-shadow">Block <i class="fas fa-xmark"></i></div>
+            <div class="cat bi-bg-alt bi-shadow">Background <i class="fas fa-xmark"></i></div>
+            <div class="cat bi-bg-alt bi-shadow">Foreground <i class="fas fa-xmark"></i></div>
+        </div>
+        <br>
+        <button type="submit" class="bi-btn bi-shadow">&ThickSpace; Add &ThickSpace;</button>
+    </form>
+</div>

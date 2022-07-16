@@ -1,0 +1,34 @@
+<%- contentFor('title') %>
+BI - All Category
+<%- contentFor('head') %>
+<link rel="stylesheet" href="/css/adminItem.css">
+<%- contentFor('body') %>
+<div class="content">
+    <a href="/admin/category/add" class="bi-btn bi-shadow bi-m-y"><i class="fas fa-plus"></i> Add new Category</a>
+    <table class="bi-table">
+        <tr>
+            <th>Name</th>
+            <th>Created at</th>
+            <th>Action</th>
+        </tr>
+        <% categories.forEach(category => { %>
+            <tr>
+                <td data-name="<%= category.name %>"><%= category.name %></td>
+                <td class="data-timestamp"><%= category.timestamp %></td>
+                <td class="row">
+                    <a href="/category/<%= category.name %>" class="bi-btn bi-shadow">View</a>
+                    <a class="bi-btn bi-shadow edit-js"href="#">Edit</a>
+                    <a href="/admin/category/delete/<%= category.name %>" class="bi-btn bi-shadow delete-confirm-js" data-target="/admin/category/all">Delete</a>
+                </td>
+            </tr>
+        <% }) %>
+        <% if(categories == 0) { %>
+            <tr>
+                <td colspan="3" class="text-center">No Category.</td>
+            </tr>
+        <% } %>
+    </table>
+</div>
+<script src="/js/timestamp.js"></script>
+<script src="/js/deleteAlert.js"></script>
+<script src="/js/categoryEdit.js"></script>

@@ -1,0 +1,19 @@
+<%- contentFor('title') %>
+Add new Category
+<%- contentFor('head') %>
+<link rel="stylesheet" href="/css/adminItem.css">
+<%- contentFor('body') %>
+<div class="content">
+    <form id="main_form" class="bi-bg bi-border">
+        <span class="info">Anything labeled as * (red asterisk) is required and should not be left empty and the rest are optional, please provide official information.</span>
+        <br>
+        <span id="error_message"></span>
+        <br>
+        <label for="name">Name <span class="required">*</span></label>
+        <br>
+        <input type="text" name="name" id="name" class="bi-input" autocomplete="off" placeholder="Category name e.g: Background">
+        <br><br>
+        <button type="submit" class="bi-btn bi-shadow">&ThickSpace; Add &ThickSpace;</button>
+    </form>
+</div>
+<script src="/js/categoryAdd.js"></script>

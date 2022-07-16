@@ -18,7 +18,7 @@ const ItemObject: SchemaDefinitionProperty<Breainfo.ItemType> = new ItemStructur
 	},
 	description: String,
 	gems: Number,
-	category: Array,
+	category: [{ type: Schema.Types.ObjectId, ref: 'ItemCategory' }],
 	farmability: String,
 	droppable: String,
 	tradable: String,

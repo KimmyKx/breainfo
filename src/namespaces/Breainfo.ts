@@ -63,6 +63,7 @@ declare namespace Breainfo {
       }  
     }
     interface ReqAuthorizeMiddleware {
+      params: any
       data: {
         signed: boolean
         admin: boolean

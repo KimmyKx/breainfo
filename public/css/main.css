@@ -59,6 +59,12 @@ body::before {
     justify-content: center;
 }
 
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .text-white {
     color: white;
 }
@@ -126,6 +132,7 @@ nav .menu-bar {
     right: 0;
     bottom: 0;
     display: none;
+    z-index: 999;
 }
 
 .loading img {
@@ -256,6 +263,7 @@ aside {
     color: white;
     padding: 3px;
     box-sizing: border-box;
+    resize: none;
 }
 
 .bi-input::placeholder {
