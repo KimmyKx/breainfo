@@ -280,6 +280,7 @@ aside {
     border-radius: 5px;
     color: white;
     border: 0;
+    cursor: pointer;
     text-decoration: none;
 }
 

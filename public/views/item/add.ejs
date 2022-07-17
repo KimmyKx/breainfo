@@ -4,33 +4,45 @@ Add new Item
 <link rel="stylesheet" href="/css/adminItem.css">
 <%- contentFor('body') %>
 <div class="content">
-    <form action="/item/add" method="post" enctype="multipart/form-data" class="bi-bg bi-border">
+    <form action="/item/add" id="main_form" class="bi-bg bi-border">
         <span class="info">Anything labeled as * (red asterisk) is required and should not be left empty and the rest are optional, please provide official information.</span>
         <br>
+        <!-- Name -->
         <label for="name">Name <span class="required">*</span></label>
         <br>
         <input type="text" name="name" id="name" class="bi-input" autocomplete="off" placeholder="Item name e.g: Dirt">
         <br><br>
+        <!-- Image -->
         <label for="image">Image</label>
         <br>
         <input type="file" name="image" id="image" class="bi-input" accept="image/*" autocomplete="off">
         <br><br>
+        <!-- Description -->
         <label for="description">Description</label>
         <br>
         <textarea name="description" id="description" class="bi-input" cols="50" rows="7" spellcheck="false" placeholder="Describe the item, e.g: what it use for, who designs it, when it was released, special effects, etc"></textarea>
         <br><br>
+        <!-- Gems -->
         <label for="gems">Gems</label>
         <br>
         <input type="text" name="gems" id="gems" class="bi-input" placeholder="e.g: 10-21 Gems">
         <br><br>
-        <label for="category">Category <i class="fas fa-plus"></i></label>
+        <!-- Category -->
+        <label for="category">Category <i class="fas fa-plus add-category"></i></label>
         <br>
-        <div id="category_holder" class="bi-bg bi-border">
-            <div class="cat bi-bg-alt bi-shadow">Block <i class="fas fa-xmark"></i></div>
-            <div class="cat bi-bg-alt bi-shadow">Background <i class="fas fa-xmark"></i></div>
-            <div class="cat bi-bg-alt bi-shadow">Foreground <i class="fas fa-xmark"></i></div>
-        </div>
+        <div id="category_holder" class="bi-bg bi-border"></div>
         <br>
+        <!-- Submit -->
         <button type="submit" class="bi-btn bi-shadow">&ThickSpace; Add &ThickSpace;</button>
     </form>
 </div>
+<div class="categories-bg">
+    <div class="categories bi-border bi-bg bi-scroll">
+        <div class="close"><i class="fas fa-xmark"></i></div>
+        <h2>Category List</h2>
+        <% categories.forEach(category => { %>
+            <div class="cat-select bi-bg-alt bi-btn bi-shadow" data-name="<%= category.name %>" data-id="<%= category._id%>"><%= category.name %> <i class="fas fa-plus"></i></div>
+        <% }) %>
+    </div>
+</div>
+<script src="/js/itemAdd.js"></script>

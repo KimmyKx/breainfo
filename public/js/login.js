@@ -1,5 +1,6 @@
 main_form.onsubmit = async e => {
     e.preventDefault()
+    loading.style.display = 'flex'
     const username = e.target.username.value
     const password = e.target.password.value
     try {
@@ -9,6 +10,7 @@ main_form.onsubmit = async e => {
 			headers: { 'Content-Type': 'application/json' }
         })
         const data = await res.json()
+        loading.style.display = 'none'
         if(data.success) {
             location = '/'
         } else {
@@ -16,6 +18,7 @@ main_form.onsubmit = async e => {
         }
         console.log(data)
     } catch(err) {
+        loading.style.display = 'none'
         console.error(err)
     }
 }

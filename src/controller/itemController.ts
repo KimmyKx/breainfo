@@ -4,6 +4,7 @@ import { HandleError } from '../utils/middleware'
 import Breainfo from '../namespaces/Breainfo'
 import { Request, Response } from 'express'
 import middleware from '../utils/middleware'
+import ItemCategory from '../models/itemCategory'
 
 const HandleItemAddPost = async (req: Breainfo.ReqItemAddPost, res: Response) => {
 	try {
@@ -44,10 +45,10 @@ const HandleItemSearchPost = async (req: Breainfo.ReqItemSearchPost, res: Respon
 	}
 }
 
-const HandleItemAddGet = (req: any, res: Response) => {
+const HandleItemAddGet = async (req: any, res: Response) => {
 	try {
 		if(!req.data?.admin) return res.status(403).json({ error: '403 Forbidden' })
-		res.render('item/add', { signed: req.data.signed, admin: true })
+		res.render('item/add', { signed: req.data.signed, admin: true, categories: await ItemCategory.find({}).lean() })
 	} catch(err) {
 		HandleError(res, err)
 	}
